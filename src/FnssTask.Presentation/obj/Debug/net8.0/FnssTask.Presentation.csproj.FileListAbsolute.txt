@@ -1,5 +1,7 @@
 /Users/onurkirik/Projects/fnss-task/src/FnssTask.Presentation/bin/Debug/net8.0/appsettings.Development.json
 /Users/onurkirik/Projects/fnss-task/src/FnssTask.Presentation/bin/Debug/net8.0/appsettings.json
+/Users/onurkirik/Projects/fnss-task/src/FnssTask.Presentation/bin/Debug/net8.0/package-lock.json
+/Users/onurkirik/Projects/fnss-task/src/FnssTask.Presentation/bin/Debug/net8.0/package.json
 /Users/onurkirik/Projects/fnss-task/src/FnssTask.Presentation/bin/Debug/net8.0/FnssTask.Presentation.staticwebassets.runtime.json
 /Users/onurkirik/Projects/fnss-task/src/FnssTask.Presentation/bin/Debug/net8.0/FnssTask.Presentation
 /Users/onurkirik/Projects/fnss-task/src/FnssTask.Presentation/bin/Debug/net8.0/FnssTask.Presentation.deps.json
@@ -13,6 +15,7 @@
 /Users/onurkirik/Projects/fnss-task/src/FnssTask.Presentation/obj/Debug/net8.0/FnssTask.Presentation.MvcApplicationPartsAssemblyInfo.cache
 /Users/onurkirik/Projects/fnss-task/src/FnssTask.Presentation/obj/Debug/net8.0/FnssTask.Presentation.RazorAssemblyInfo.cache
 /Users/onurkirik/Projects/fnss-task/src/FnssTask.Presentation/obj/Debug/net8.0/FnssTask.Presentation.RazorAssemblyInfo.cs
+/Users/onurkirik/Projects/fnss-task/src/FnssTask.Presentation/obj/Debug/net8.0/FnssTask.Presentation.sourcelink.json
 /Users/onurkirik/Projects/fnss-task/src/FnssTask.Presentation/obj/Debug/net8.0/staticwebassets.build.json
 /Users/onurkirik/Projects/fnss-task/src/FnssTask.Presentation/obj/Debug/net8.0/staticwebassets.development.json
 /Users/onurkirik/Projects/fnss-task/src/FnssTask.Presentation/obj/Debug/net8.0/staticwebassets/msbuild.FnssTask.Presentation.Microsoft.AspNetCore.StaticWebAssets.props

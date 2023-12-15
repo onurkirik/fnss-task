@@ -9,6 +9,10 @@
       "PackagePath": "staticwebassets/css/site.css"
     },
     {
+      "Id": "/Users/onurkirik/Projects/fnss-task/src/FnssTask.Presentation/wwwroot/css/styles.css",
+      "PackagePath": "staticwebassets/css/styles.css"
+    },
+    {
       "Id": "/Users/onurkirik/Projects/fnss-task/src/FnssTask.Presentation/wwwroot/favicon.ico",
       "PackagePath": "staticwebassets/favicon.ico"
     },

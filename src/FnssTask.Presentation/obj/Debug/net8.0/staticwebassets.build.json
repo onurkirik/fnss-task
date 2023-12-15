@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "TqWevzrDH8d8RVnFrC/JggixWKqvGITTKXT1JpwrD44=",
+  "Hash": "V1+ktN06lmcZIsNf2HLJODuDWKPJdhIkFGZ9MsMLQvE=",
   "Source": "FnssTask.Presentation",
   "BasePath": "_content/FnssTask.Presentation",
   "Mode": "Default",
@@ -72,6 +72,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/css/site.css"
+    },
+    {
+      "Identity": "/Users/onurkirik/Projects/fnss-task/src/FnssTask.Presentation/wwwroot/css/styles.css",
+      "SourceId": "FnssTask.Presentation",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/onurkirik/Projects/fnss-task/src/FnssTask.Presentation/wwwroot/",
+      "BasePath": "_content/FnssTask.Presentation",
+      "RelativePath": "css/styles.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/css/styles.css"
     },
     {
       "Identity": "/Users/onurkirik/Projects/fnss-task/src/FnssTask.Presentation/wwwroot/favicon.ico",
