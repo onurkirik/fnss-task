@@ -18,31 +18,31 @@ public class CategoryRepository : ICategoryRepository
     public async Task<IEnumerable<Category>> GetAllAsync()
     {
         using var connection = new MySqlConnection(_connectionString);
-        return await connection.QueryAsync<Category>("SELECT * FROM Articles");
+        return await connection.QueryAsync<Category>("SELECT * FROM Categories");
     }
 
     public async Task<Category> GetByIdAsync(int id)
     {
         using var connection = new MySqlConnection(_connectionString);
-        return await connection.QueryFirstOrDefaultAsync<Category>("SELECT * FROM Articles WHERE Id = @Id", new { Id = id });
+        return await connection.QueryFirstOrDefaultAsync<Category>("SELECT * FROM Categories WHERE Id = @Id", new { Id = id });
     }
 
     public async Task<int> AddAsync(Category entity)
     {
         using var connection = new MySqlConnection(_connectionString);
-        return await connection.ExecuteAsync($"INSERT INTO Articles VALUES (@Id, @Name, @OtherProperties)", entity);
+        return await connection.ExecuteAsync($"INSERT INTO Categories VALUES (@Name)", entity);
     }
 
     public async Task<int> UpdateAsync(Category entity)
     {
         using var connection = new MySqlConnection(_connectionString);
-        return await connection.ExecuteAsync($"UPDATE Articles SET Name = @Name, OtherProperties = @OtherProperties WHERE Id = @Id", entity);
+        return await connection.ExecuteAsync($"UPDATE Categories SET Name = @Name WHERE Id = @Id", entity);
     }
 
     public async Task<int> DeleteAsync(int id)
     {
         using var connection = new MySqlConnection(_connectionString);
-        return await connection.ExecuteAsync($"DELETE FROM Articles WHERE Id = @Id", new { Id = id });
+        return await connection.ExecuteAsync($"DELETE FROM Categories WHERE Id = @Id", new { Id = id });
     }
 }
 

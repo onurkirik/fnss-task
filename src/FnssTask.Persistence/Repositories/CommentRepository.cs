@@ -18,31 +18,35 @@ public class CommentRepository : ICommentRepository
     public async Task<IEnumerable<Comment>> GetAllAsync()
     {
         using var connection = new MySqlConnection(_connectionString);
-        return await connection.QueryAsync<Comment>("SELECT * FROM Articles");
+        return await connection.QueryAsync<Comment>("SELECT * FROM Comments");
     }
 
     public async Task<Comment> GetByIdAsync(int id)
     {
         using var connection = new MySqlConnection(_connectionString);
-        return await connection.QueryFirstOrDefaultAsync<Comment>("SELECT * FROM Articles WHERE Id = @Id", new { Id = id });
+        return await connection.QueryFirstOrDefaultAsync<Comment>("SELECT * FROM Comments WHERE Id = @Id", new { Id = id });
     }
 
     public async Task<int> AddAsync(Comment entity)
     {
         using var connection = new MySqlConnection(_connectionString);
-        return await connection.ExecuteAsync($"INSERT INTO Articles VALUES (@Id, @Name, @OtherProperties)", entity);
+        return await connection.ExecuteAsync(
+            $"INSERT INTO Comments VALUES (@AuthorName, @AuthorSurname, @CommentContent, @ArticleId)",
+            entity);
     }
 
     public async Task<int> UpdateAsync(Comment entity)
     {
         using var connection = new MySqlConnection(_connectionString);
-        return await connection.ExecuteAsync($"UPDATE Articles SET Name = @Name, OtherProperties = @OtherProperties WHERE Id = @Id", entity);
+        return await connection.ExecuteAsync(
+            $"UPDATE Comments SET AuthorName = @AuthorName, AuthorSurname = @AuthorSurname, CommentContent = @CommentContent, ArticleId = @ArticleId WHERE Id = @Id",
+            entity);
     }
 
     public async Task<int> DeleteAsync(int id)
     {
         using var connection = new MySqlConnection(_connectionString);
-        return await connection.ExecuteAsync($"DELETE FROM Articles WHERE Id = @Id", new { Id = id });
+        return await connection.ExecuteAsync($"DELETE FROM Comments WHERE Id = @Id", new { Id = id });
     }
 }
 

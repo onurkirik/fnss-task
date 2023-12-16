@@ -30,13 +30,13 @@ public class ArticleRepository : IArticleRepository
     public async Task<int> AddAsync(Article entity)
     {
         using var connection = new MySqlConnection(_connectionString);
-        return await connection.ExecuteAsync($"INSERT INTO Articles VALUES (@Id, @Name, @OtherProperties)", entity);
+        return await connection.ExecuteAsync($"INSERT INTO Articles VALUES (@Title, @Content, @CategoryId)", entity);
     }
 
     public async Task<int> UpdateAsync(Article entity)
     {
         using var connection = new MySqlConnection(_connectionString);
-        return await connection.ExecuteAsync($"UPDATE Articles SET Name = @Name, OtherProperties = @OtherProperties WHERE Id = @Id", entity);
+        return await connection.ExecuteAsync($"UPDATE Articles SET Title = @Title, Content = @Content, CategoryId = @CategoryId WHERE Id = @Id", entity);
     }
 
     public async Task<int> DeleteAsync(int id)
