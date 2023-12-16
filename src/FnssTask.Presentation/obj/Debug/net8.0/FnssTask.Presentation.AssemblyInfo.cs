@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FnssTask.Presentation")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+67386fc069815c5995655a1e8918c045f74607da")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
 [assembly: System.Reflection.AssemblyProductAttribute("FnssTask.Presentation")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FnssTask.Presentation")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
