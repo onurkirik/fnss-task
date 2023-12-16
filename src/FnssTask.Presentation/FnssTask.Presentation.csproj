@@ -18,6 +18,9 @@
 	  <ProjectReference Include="..\FnssTask.Domain\FnssTask.Domain.csproj">
 	    <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
 	  </ProjectReference>
+	  <ProjectReference Include="..\FnssTask.Persistence\FnssTask.Persistence.csproj">
+	    <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+	  </ProjectReference>
 	</ItemGroup>
 	<ItemGroup>
 	  <PackageReference Include="Dapper" Version="2.1.24" />

@@ -1,14 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "X5VvUF/MJ46VQpFiH/iSUKspOB1MBt90Lfcl1uSeJrHF/w0/pDroN3ilXqsgK5GwfVPN27x3u+PMffxWOvV5dw==",
+  "dgSpecHash": "vcanlWojkl2aVCtJHPxEFc2ex1OwJW8/R9vek2xEZNwxMuLzxiChDX61tq8g0qJNiaq3KBDKuZCa4DoSem+J/Q==",
   "success": true,
   "projectFilePath": "/Users/onurkirik/Projects/fnss-task/src/FnssTask.Application/FnssTask.Application.csproj",
-  "expectedPackageFiles": [
-    "/Users/onurkirik/.nuget/packages/dapper/2.1.24/dapper.2.1.24.nupkg.sha512",
-    "/Users/onurkirik/.nuget/packages/microsoft.extensions.dependencyinjection/8.0.0/microsoft.extensions.dependencyinjection.8.0.0.nupkg.sha512",
-    "/Users/onurkirik/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/8.0.0/microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
-    "/Users/onurkirik/.nuget/packages/microsoft.extensions.logging.abstractions/7.0.1/microsoft.extensions.logging.abstractions.7.0.1.nupkg.sha512",
-    "/Users/onurkirik/.nuget/packages/mysqlconnector/2.3.1/mysqlconnector.2.3.1.nupkg.sha512"
-  ],
+  "expectedPackageFiles": [],
   "logs": []
 }

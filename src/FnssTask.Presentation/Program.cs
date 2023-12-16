@@ -1,10 +1,14 @@
-﻿using FnssTask.Application;
+﻿using FnssTask.Persistence;
 
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddApplication();
+
+//AssPersistence
+builder.Services.AddPersistence();
+
+
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
