@@ -14,6 +14,8 @@ public static class ServiceCollectionExtensions
         serviceCollection.AddScoped<DbContext>();
 
         serviceCollection.AddScoped<IArticleRepository, ArticleRepository>();
+        serviceCollection.AddScoped<ICategoryRepository, CategoryRepository>();
+        serviceCollection.AddScoped<ICommentRepository, CommentRepository>();
 
         return serviceCollection;
     }

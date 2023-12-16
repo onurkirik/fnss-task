@@ -2,5 +2,5 @@
 
 namespace FnssTask.Application.Abstraction;
 
-public interface IArticleRepository : IRepository<Article> { }
+public interface ICategoryRepository : IRepository<Category> { }
 
