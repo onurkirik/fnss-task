@@ -6,4 +6,21 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.1.24" />
+    <PackageReference Include="MySqlConnector" Version="2.3.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Abstraction\" />
+    <None Remove="Concrete\" />
+    <None Remove="Repositories\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Abstraction\" />
+    <Folder Include="Concrete\" />
+    <Folder Include="Repositories\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FnssTask.Domain\FnssTask.Domain.csproj" />
+  </ItemGroup>
 </Project>
