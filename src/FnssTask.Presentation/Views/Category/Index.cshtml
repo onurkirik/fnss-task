@@ -1,0 +1,52 @@
+﻿@model List<Category>
+
+<div class="w-full my-8 text-[30px]">
+    <a class="text-blue-600 visited:text-purple-600 ..." asp-controller="Category" asp-action="Create">
+        Kategori Ekle
+    </a>
+</div>
+
+<div class="flex w-full p-4 text-[75px] font-bold justify-center items-center my-8 text-center">
+    Kategoriler
+</div>
+
+
+
+@if (Model != null && Model.Any())
+{
+    <ul role="list" class="divide-y divide-gray-100">
+        @foreach (var category in Model)
+        {
+
+            <li class="flex justify-around gap-x-2 py-5">
+                <div class="flex min-w-0 gap-x-4">
+                    <img class="h-12 w-12 flex-none rounded-full bg-gray-50 object-cover" src="https://w7.pngwing.com/pngs/266/704/png-transparent-computer-icons-task-other-categories-miscellaneous-angle-text.png" alt="">
+                    <div class="min-w-0 flex-auto">
+                        <p class="text-medium font-semibold leading-6 text-gray-900">Id: @category.Id</p>
+                    </div>
+                </div>
+                <div class="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
+                    <p class="text-medium leading-6 text-gray-900">Ad: @category.Name</p>
+                </div>
+                <div class="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
+                    <p class="text-medium font-bold text-[green] leading-6">
+                        <a asp-controller="Category" asp-action="Update" asp-route-id="@category.Id">
+                            Güncelle
+                        </a>
+                    </p>
+                </div>
+                <div class="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
+                    <p class="text-medium font-bold text-[red] leading-6">
+                        <a asp-controller="Category" asp-action="Delete" asp-route-id="@category.Id">
+                            Sil
+                        </a>
+                    </p>
+                </div>
+            </li>
+        }
+    </ul>
+}
+else
+{
+    <p>Kayıtlı Kategori Bulunamadı</p>
+}

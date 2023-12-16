@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using FnssTask.Presentation.Models;
 using FnssTask.Application.Abstraction;
-using FnssTask.Domain.Entities;
 
 namespace FnssTask.Presentation.Controllers;
 
@@ -19,12 +18,6 @@ public class HomeController : Controller
 
     public async Task<IActionResult> Index()
     {
-        var entity = await _categoryRepository.GetByIdAsync(1);
-
-        entity.Name = "Updated Category";
-
-        await _categoryRepository.UpdateAsync(entity);
-
         return View();
     }
 

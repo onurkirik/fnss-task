@@ -30,7 +30,7 @@ public class CategoryRepository : ICategoryRepository
     public async Task<int> AddAsync(Category entity)
     {
         using var connection = new MySqlConnection(_connectionString);
-        return await connection.ExecuteAsync($"INSERT INTO Categories VALUES (@Name)", entity);
+        return await connection.ExecuteAsync("INSERT INTO Categories (Name) VALUES (@Name)", entity);
     }
 
     public async Task<int> UpdateAsync(Category entity)
