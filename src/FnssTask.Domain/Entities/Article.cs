@@ -7,7 +7,7 @@ public class Article
     public string Content { get; set; }
 
     //Navigation Properties
-    public int CagetoryId { get; set; }
+    public int CategoryId { get; set; }
     public Category Category { get; set; }
 
     public List<Comment> Comments { get; set; }

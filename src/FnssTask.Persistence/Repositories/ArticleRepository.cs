@@ -23,14 +23,14 @@ public class ArticleRepository : IArticleRepository
                         A.Id, 
                         A.Title, 
                         A.Content, 
-                        A.CagetoryId, 
+                        A.CategoryId, 
                         C.Id AS CategoryId, 
                         C.Name AS CategoryName, 
                         COALESCE(JSON_ARRAYAGG(JSON_OBJECT('id', CO.Id, 'authorName', CO.AuthorName, 'authorSurname', CO.AuthorSurname, 'content', CO.CommentContent)), '[]') AS Comments
                         FROM 
                             Articles A
                         LEFT JOIN 
-                            Categories C ON A.CagetoryId = C.Id
+                            Categories C ON A.CategoryId = C.Id
                         LEFT JOIN 
                             Comments CO ON A.Id = CO.ArticleId
                         GROUP BY 
@@ -49,14 +49,14 @@ public class ArticleRepository : IArticleRepository
                         A.Id, 
                         A.Title, 
                         A.Content, 
-                        A.CagetoryId, 
+                        A.CategoryId, 
                         C.Id AS CategoryId, 
                         C.Name AS CategoryName, 
                         COALESCE(JSON_ARRAYAGG(JSON_OBJECT('id', CO.Id, 'authorName', CO.AuthorName, 'authorSurname', CO.AuthorSurname, 'content', CO.CommentContent)), '[]') AS Comments
                     FROM 
                         Articles A
                     LEFT JOIN 
-                        Categories C ON A.CagetoryId = C.Id
+                        Categories C ON A.CategoryId = C.Id
                     LEFT JOIN 
                         Comments CO ON A.Id = CO.ArticleId
                     WHERE 
@@ -72,7 +72,10 @@ public class ArticleRepository : IArticleRepository
     public async Task<int> AddAsync(Article entity)
     {
         using var connection = new MySqlConnection(_connectionString);
-        return await connection.ExecuteAsync($"INSERT INTO Articles VALUES (@Title, @Content, @CategoryId)", entity);
+        return await connection.ExecuteAsync(
+            "INSERT INTO Articles (Title, Content, CategoryId) VALUES (@Title, @Content, @CategoryId)",
+            new { entity.Title, entity.Content, entity.CategoryId }
+        );
     }
 
     public async Task<int> UpdateAsync(Article entity)
