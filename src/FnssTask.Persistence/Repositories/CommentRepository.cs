@@ -31,8 +31,8 @@ public class CommentRepository : ICommentRepository
     {
         using var connection = new MySqlConnection(_connectionString);
         return await connection.ExecuteAsync(
-            $"INSERT INTO Comments VALUES (@AuthorName, @AuthorSurname, @CommentContent, @ArticleId)",
-            entity);
+                            $"INSERT INTO Comments (AuthorName, AuthorSurname, CommentContent, ArticleId) VALUES (@AuthorName, @AuthorSurname, @CommentContent, @ArticleId)",
+                            entity);
     }
 
     public async Task<int> UpdateAsync(Comment entity)

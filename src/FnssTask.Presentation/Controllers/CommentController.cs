@@ -13,44 +13,64 @@ namespace FnssTask.Presentation.Controllers
     public class CommentController : Controller
     {
         private readonly ICommentRepository _commentRepository;
+        private readonly IArticleRepository _articleRepository;
 
-        public CommentController(ICommentRepository commentRepository)
+        public CommentController(ICommentRepository commentRepository, IArticleRepository articleRepository)
         {
             _commentRepository = commentRepository;
+            _articleRepository = articleRepository;
         }
 
         // GET: /<controller>/
         public async Task<IActionResult> Index(int id)
         {
             var comments = await _commentRepository.GetAllWithArticleAsync(id);
+            ViewBag.ArticleId = id;
 
             return View(comments);
         }
 
         //Get
-        public async Task<IActionResult> Create()
+        public async Task<IActionResult> Create(int id)
         {
+            ViewBag.articleId = id;
+
             return View();
         }
 
-        //Get
+        //Post
         [HttpPost]
         public async Task<IActionResult> Create(Comment comment)
         {
-            return RedirectToAction("Index");
+            await _commentRepository.AddAsync(comment);
+
+            return RedirectToAction("Index", new { id = comment.ArticleId });
         }
 
         //Get
         public async Task<IActionResult> Update(int id)
         {
-            return View();
+            var comment = await _commentRepository.GetByIdAsync(id);
+
+            return View(comment);
         }
 
-        //Get
+        //Post
         [HttpPost]
         public async Task<IActionResult> Update(Comment comment)
         {
-            return RedirectToAction("Index");
+            await _commentRepository.UpdateAsync(comment);
+
+            return RedirectToAction("Index", new { id = comment.ArticleId });
+        }
+
+        //Post
+        [HttpPost]
+        public async Task<IActionResult> Delete(int id)
+        {
+            await _commentRepository.DeleteAsync(id);
+
+            return RedirectToAction("Index", "Article");
         }
     }
 }

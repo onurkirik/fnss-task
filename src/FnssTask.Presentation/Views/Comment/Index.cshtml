@@ -1,7 +1,10 @@
 ﻿@model IEnumerable<Comment>
+@{
+    int articleId = ViewBag.ArticleId ?? 0;
+}
 
 <div class="w-full my-8 text-[30px]">
-    <a class="text-blue-600 visited:text-purple-600 ..." asp-controller="Comment" asp-action="Create">
+    <a class="text-blue-600 visited:text-purple-600 ..." asp-controller="Comment" asp-action="Create" asp-route-id="@articleId">
         Yorum Ekle
     </a>
 </div>
@@ -22,27 +25,29 @@
                 <div class="flex min-w-0 gap-x-4">
                     <img class="h-12 w-12 flex-none rounded-full bg-gray-50 object-cover" src="https://w7.pngwing.com/pngs/266/704/png-transparent-computer-icons-task-other-categories-miscellaneous-angle-text.png" alt="">
                     <div class="min-w-0 flex-auto">
-                        <p class="text-medium font-semibold leading-6 text-gray-900">Id: @comment.AuthorName</p>
+                        <p class="text-medium font-semibold leading-6 text-gray-900">Ad: @comment.AuthorName</p>
                     </div>
                 </div>
                 <div class="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
-                    <p class="text-medium leading-6 text-gray-900">Ad: @comment.AuthorSurname</p>
+                    <p class="text-medium leading-6 text-gray-900">Soyad: @comment.AuthorSurname</p>
                 </div>
                 <div class="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
-                    <p class="text-medium leading-6 text-gray-900">Ad: @comment.CommentContent</p>
+                    <p class="text-medium leading-6 text-gray-900">Yorum: @comment.CommentContent</p>
                 </div>
                 <div class="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
                     <p class="text-medium font-bold text-[green] leading-6">
-                        <a asp-controller="Category" asp-action="Update" asp-route-id="@comment.Id">
+                        <a asp-controller="Comment" asp-action="Update" asp-route-id="@comment.Id">
                             Güncelle
                         </a>
                     </p>
                 </div>
                 <div class="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
                     <p class="text-medium font-bold text-[red] leading-6">
-                        <a asp-controller="Comment" asp-action="Delete" asp-route-id="@comment.Id">
-                            Sil
-                        </a>
+                        <form asp-controller="Comment" asp-action="Delete" asp-route-id="@comment.Id" method="post">
+                            <button type="submit">
+                                Sil
+                            </button>
+                        </form>
                     </p>
                 </div>
             </li>
