@@ -58,7 +58,7 @@ public class CategoryController : Controller
     }
 
     //Delete
-    [HttpDelete]
+    [HttpPost]
     public async Task<IActionResult> Delete(int id)
     {
         await _categoryRepository.DeleteAsync(id);

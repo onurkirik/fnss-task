@@ -18,23 +18,17 @@ public class ArticleRepository : IArticleRepository
     public async Task<IEnumerable<Article>> GetAllAsync()
     {
         using var connection = new MySqlConnection(_connectionString);
-        var query = @"
+        string query = @"
                         SELECT 
-                        A.Id, 
-                        A.Title, 
-                        A.Content, 
-                        A.CategoryId, 
-                        C.Id AS CategoryId, 
-                        C.Name AS CategoryName, 
-                        COALESCE(JSON_ARRAYAGG(JSON_OBJECT('id', CO.Id, 'authorName', CO.AuthorName, 'authorSurname', CO.AuthorSurname, 'content', CO.CommentContent)), '[]') AS Comments
+                            A.Id, 
+                            A.Title, 
+                            A.Content, 
+                            C.Id AS CategoryId, 
+                            C.Name AS CategoryName
                         FROM 
                             Articles A
                         LEFT JOIN 
-                            Categories C ON A.CategoryId = C.Id
-                        LEFT JOIN 
-                            Comments CO ON A.Id = CO.ArticleId
-                        GROUP BY 
-                            A.Id";
+                            Categories C ON A.CategoryId = C.Id";
 
         var articles = await connection.QueryAsync<Article>(query);
 
@@ -45,24 +39,20 @@ public class ArticleRepository : IArticleRepository
     {
         using var connection = new MySqlConnection(_connectionString);
         var query = @"
-                    SELECT 
-                        A.Id, 
-                        A.Title, 
-                        A.Content, 
-                        A.CategoryId, 
-                        C.Id AS CategoryId, 
-                        C.Name AS CategoryName, 
-                        COALESCE(JSON_ARRAYAGG(JSON_OBJECT('id', CO.Id, 'authorName', CO.AuthorName, 'authorSurname', CO.AuthorSurname, 'content', CO.CommentContent)), '[]') AS Comments
-                    FROM 
-                        Articles A
-                    LEFT JOIN 
-                        Categories C ON A.CategoryId = C.Id
-                    LEFT JOIN 
-                        Comments CO ON A.Id = CO.ArticleId
-                    WHERE 
-                        A.Id = @Id
-                    GROUP BY 
-                        A.Id";
+                        SELECT 
+                            A.Id, 
+                            A.Title, 
+                            A.Content, 
+                            C.Id AS CategoryId, 
+                            C.Name AS CategoryName
+                        FROM 
+                            Articles A
+                        LEFT JOIN 
+                            Categories C ON A.CategoryId = C.Id
+                            WHERE 
+                             A.Id = @Id
+                             GROUP BY 
+                             A.Id";
 
         var article = await connection.QueryFirstOrDefaultAsync<Article>(query, new { Id = id });
 

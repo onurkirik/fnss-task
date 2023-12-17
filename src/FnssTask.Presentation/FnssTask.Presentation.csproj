@@ -30,11 +30,13 @@
 	  <None Remove="Views\Category\" />
 	  <None Remove="Views\Article\" />
 	  <None Remove="Models\Article\" />
+	  <None Remove="Views\Comment\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="Views\Category\" />
 	  <Folder Include="Views\Article\" />
 	  <Folder Include="Models\Article\" />
+	  <Folder Include="Views\Comment\" />
 	</ItemGroup>
 	<Target Name="Tailwind" BeforeTargets="Build">
 		<Exec Command="npm run css:build" />

@@ -48,5 +48,11 @@ public class CommentRepository : ICommentRepository
         using var connection = new MySqlConnection(_connectionString);
         return await connection.ExecuteAsync($"DELETE FROM Comments WHERE Id = @Id", new { Id = id });
     }
+
+    public async Task<IEnumerable<Comment>> GetAllWithArticleAsync(int id)
+    {
+        using var connection = new MySqlConnection(_connectionString);
+        return await connection.QueryAsync<Comment>("SELECT * FROM Comments WHERE ArticleId = @ArticleId", new { ArticleId = id });
+    }
 }
 
