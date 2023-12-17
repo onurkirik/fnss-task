@@ -18,13 +18,55 @@ public class ArticleRepository : IArticleRepository
     public async Task<IEnumerable<Article>> GetAllAsync()
     {
         using var connection = new MySqlConnection(_connectionString);
-        return await connection.QueryAsync<Article>("SELECT * FROM Articles");
+        var query = @"
+                        SELECT 
+                        A.Id, 
+                        A.Title, 
+                        A.Content, 
+                        A.CagetoryId, 
+                        C.Id AS CategoryId, 
+                        C.Name AS CategoryName, 
+                        COALESCE(JSON_ARRAYAGG(JSON_OBJECT('id', CO.Id, 'authorName', CO.AuthorName, 'authorSurname', CO.AuthorSurname, 'content', CO.CommentContent)), '[]') AS Comments
+                        FROM 
+                            Articles A
+                        LEFT JOIN 
+                            Categories C ON A.CagetoryId = C.Id
+                        LEFT JOIN 
+                            Comments CO ON A.Id = CO.ArticleId
+                        GROUP BY 
+                            A.Id";
+
+        var articles = await connection.QueryAsync<Article>(query);
+
+        return articles;
     }
 
     public async Task<Article> GetByIdAsync(int id)
     {
         using var connection = new MySqlConnection(_connectionString);
-        return await connection.QueryFirstOrDefaultAsync<Article>("SELECT * FROM Articles WHERE Id = @Id", new { Id = id });
+        var query = @"
+                    SELECT 
+                        A.Id, 
+                        A.Title, 
+                        A.Content, 
+                        A.CagetoryId, 
+                        C.Id AS CategoryId, 
+                        C.Name AS CategoryName, 
+                        COALESCE(JSON_ARRAYAGG(JSON_OBJECT('id', CO.Id, 'authorName', CO.AuthorName, 'authorSurname', CO.AuthorSurname, 'content', CO.CommentContent)), '[]') AS Comments
+                    FROM 
+                        Articles A
+                    LEFT JOIN 
+                        Categories C ON A.CagetoryId = C.Id
+                    LEFT JOIN 
+                        Comments CO ON A.Id = CO.ArticleId
+                    WHERE 
+                        A.Id = @Id
+                    GROUP BY 
+                        A.Id";
+
+        var article = await connection.QueryFirstOrDefaultAsync<Article>(query, new { Id = id });
+
+        return article;
     }
 
     public async Task<int> AddAsync(Article entity)

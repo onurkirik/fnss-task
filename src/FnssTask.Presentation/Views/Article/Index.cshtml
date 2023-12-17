@@ -1,0 +1,44 @@
+﻿@model List<Article>
+
+    <div class="w-full my-8 text-[30px]">
+        <a class="text-blue-600 visited:text-purple-600 ..." asp-controller="Article" asp-action="Create">
+            Makale Ekle
+        </a>
+    </div>
+
+    <div class="flex w-full p-4 text-[75px] font-bold justify-center items-center my-8 text-center">
+        Makaleler
+    </div>
+
+    @if (Model != null && Model.Any())
+    {
+        @foreach (var category in Model.Any())
+        {
+            <div class="min-w-xl w-full lg:max-w-full lg:flex">
+                <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDFFnFeI5Gg6ngxXKgqnDKwvZUK3HFB0eLOg&usqp=CAU')" title="Woman holding a mug">
+                </div>
+                <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+                    <div class="mb-8">
+                        <p class="text-sm text-gray-600 flex items-center">
+                        </p>
+                        <div class="text-gray-900 font-bold text-xl mb-2">
+                        </div>
+                        <p class="text-gray-700 text-base">
+                        </p>
+                    </div>
+                    <div class="w-full items-center justify-start text-start font-bold"></div>
+                    <div class="flex items-center">
+                        <img class="w-10 h-10 rounded-full mr-4" src="https://www.shareicon.net/data/512x512/2017/01/23/874872_idea_512x512.png" alt="Avatar of Jonathan Reinink">
+                        <div class="text-sm">
+                            <p class="text-gray-900 leading-none"></p>
+                            <p class="text-gray-600"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <p>Kayıtlı Makale Bulunamadı</p>
+    }

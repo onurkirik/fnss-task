@@ -28,9 +28,11 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <None Remove="Views\Category\" />
+	  <None Remove="Views\Article\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="Views\Category\" />
+	  <Folder Include="Views\Article\" />
 	</ItemGroup>
 	<Target Name="Tailwind" BeforeTargets="Build">
 		<Exec Command="npm run css:build" />
